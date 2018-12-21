@@ -1,35 +1,28 @@
-// # Friend Finder - Node and Express Servers
+var express = require("express");
+var app = express();
+var path = require('path')
 
-// ### Overview
+var PORT = process.env.PORT || 3000
 
-// In this activity, you'll build a compatibility-based "FriendFinder" application -- basically a dating app. This full-stack site will take in results from your users' surveys, then compare their answers with those from other users. The app will then display the name and picture of the user with the best overall match.
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
-// You will use Express to handle routing. Make sure you deploy your app to Heroku so other users can fill it out.
+// app.use(express.static(path.join(__dirname, '/app/public')));
+
+// require("./app/routing/apiRoutes")(app);
+require("./app/routing/htmlRoutes")(app);
 
 
-// ### Before You Begin
 
-// * Check out [this demo version of the site](https://friend-finder-fsf.herokuapp.com/). Use this as a model for how we expect your assignment look and operate.
 
-// * Create a folder called `FriendFinder`. Inside the folder, organize your directories so it matches the following:
-
-//   ```
-//   FriendFinder
-//     - .gitignore
-//     - app
-//       - data
-//         - friends.js
-//       - public
-//         - home.html
-//         - survey.html
-//       - routing
-//         - apiRoutes.js
-//         - htmlRoutes.js
-//     - node_modules
-//     - package.json
-//     - server.js
-//   ```
-
+// app.get('/', function (req, res) {
+//     res.send('Hello World')
+//   })
+   
+  app.listen(PORT, function () {
+      console.log("app listening on PORT:" + PORT);
+      
+  })
 // ### Submission on BCS
 
 // * Please submit both the deployed Heroku link to your homework AND the link to the Github Repository!
@@ -38,7 +31,6 @@
 
 // 1. Your survey should have 10 questions of your choosing. Each answer should be on a scale of 1 to 5 based on how much the user agrees or disagrees with a question.
 
-// 2. Your `server.js` file should require the basic npm packages we've used in class: `express` and `path`.
 
 // 3. Your `htmlRoutes.js` file should include two routes:
 

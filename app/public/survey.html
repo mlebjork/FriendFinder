@@ -1,12 +1,159 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+
 <body>
     <h1>Survey</h1>
+
+    <form>
+        <div class="form-group">
+            <label for="name-input">Name</label>
+            <input name="name" type="text" class="form-control" placeholder="Name">
+        </div>
+        <div class="form-group">
+            <label for="picture">Link to Picture</label>
+            <input name="picture" type="link" class="form-control" placeholder="link to picture">
+        </div>
+
+        <div class="form-group">
+            <label for="answerSelect1">question 1</label>
+            <select name="question1" class="form-control">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="answerSelect3">Question 2</label>
+            <select name="question2" class="form-control">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="answerSelect4">Question 3</label>
+            <select name="question2" class="form-control">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="answerSelect4">Question 4</label>
+            <select name="question4" class="form-control">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="answerSelect5">Question 5</label>
+            <select name="question5" class="form-control">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="answerSelect6">Question 6</label>
+            <select name="question2" class="form-control">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="answerSelect7">Question 7</label>
+            <select name="question7" class="form-control">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="answerSelect8">Question 8</label>
+            <select name="question8" class="form-control">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="answerSelect9">Question 9</label>
+            <select name="question9" class="form-control">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+
+        </div>
+        <div class="form-group">
+            <label for="answerSelect10">Question 10</label>
+            <select name="question10" class="form-control">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+
+        </div>
+        <input type="submit" value="Submit"></input>
+    </form>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $("form").submit(function(event) {
+                var values = $(this).serializeArray();
+                event.preventDefault();
+                
+                var name = _.find(values, ['name', 'name']).value;
+                var picture = _.find(values, ['name', 'picture']).value;
+                
+                // Filter out just the questions
+                // var questions = _.filter(values, function(v) { return v.name.match(/^question/); });
+
+                // Map questions to array of {questionNum: int}
+                // var scores = _.map(questions, function(v) { return {[v.name]: parseInt(v.value)} );
+                
+                // Filter questions and map to array of {questionNum: int}
+                var scores = _.map(
+                    _.filter(values, function(v) { return v.name.match(/^question/); }),
+                    function(v) { return {[v.name]: parseInt(v.value)}
+                });
+            });
+        });
+    </script>
 </body>
+
 </html>

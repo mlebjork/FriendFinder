@@ -149,8 +149,18 @@
                 // Filter questions and map to array of {questionNum: int}
                 var scores = _.map(
                     _.filter(values, function(v) { return v.name.match(/^question/); }),
-                    function(v) { return {[v.name]: parseInt(v.value)}
-                });
+                    function(v) { return parseInt(v.value); }
+                );
+
+                var params = {
+                    name: name,
+                    picture: picture,
+                    scores: scores
+                };
+
+                $.post('/api/friends', params).done(function(data) {
+				    alert("MATCHED " + data.match.name);
+      		    });
             });
         });
     </script>
